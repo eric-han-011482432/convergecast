@@ -7,22 +7,17 @@ import java.util.List;
  * Created by tphadke on 8/29/17.
  */
 public class Processor {
+	boolean isLeafNode = true;
     int id ;
     int value;
     int max;
     List<Processor> children ;
     Processor parent;
-
+    
     public Processor(int id, int value) {
     		this.id = id;
     		this.value = value;
         children = new ArrayList<Processor>();
-    }
-
-    public void addToChildren(Processor p) {
-    		if(!children.contains(p)) {
-    			children.add(p);
-    		}
     }
 
     public int findMax(List<Processor> children) {
@@ -34,28 +29,15 @@ public class Processor {
     			if (c.value> max) {
     				this.max = c.value;
     			}
+			returnMax();
     			children2 = (ArrayList<Processor>) c.children;
     			findMax(children2);
     		}
-    		findMax(children);
-    		returnMax(max);
     		return max;
     }
     
-    private void returnMax(int maximum) {
-    		parent.max = maximum;
+    public void returnMax() {
+    		parent.max = max;
 	}
-
-	public int getId() {
-    		return this.id;
-    }
-    
-    public int getValue() {
-    		return this.value;
-    }
-    
-    public int getMax() {
-    		return this.max;
-    }
     
 }
