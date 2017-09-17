@@ -4,6 +4,7 @@ public class Processor {
 	boolean isLeafNode = true;
     int id ;
     int value;
+    String concatenated;
     boolean isRoot = false;
     Processor left;
     Processor right;
