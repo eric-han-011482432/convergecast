@@ -18,10 +18,10 @@ public class Convergecast {
 	
 	public void init() {
 		Processor p0 = new Processor(0,23);
-		Processor p1 = new Processor(1,100);
+		Processor p1 = new Processor(1,25);
 		Processor p2 = new Processor(2,99);
 		Processor p3 = new Processor(3,85);
-		Processor p4 = new Processor(4,999);
+		Processor p4 = new Processor(4,33);
 		processors.add(p0);
 		processors.add(p1);
 		processors.add(p2);
@@ -56,7 +56,7 @@ public class Convergecast {
 		if(node==null) return Integer.MIN_VALUE;
 		else {
 			int max = Max(node.value, findMax(node.left), findMax(node.right));
-			System.out.println("Maximum value found so far at Processor#" + node.id+ "is: " + max);
+			System.out.println("Maximum value found so far at Processor#" + node.id+ " is: " + max);
 			values.put(node, max);
 			return max;
 		}
