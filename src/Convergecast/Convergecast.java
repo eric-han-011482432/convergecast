@@ -15,7 +15,7 @@ public class Convergecast {
 		Convergecast cc = new Convergecast();
 		cc.init();
 	}
-	
+	//We are instantiating 5 processors with their corresponding values.
 	public void init() {
 		Processor p0 = new Processor(0,23);
 		Processor p1 = new Processor(1,25);
@@ -36,12 +36,14 @@ public class Convergecast {
 		p3.parent = p2;
 		p0.parent = null;
 		p4.parent = p1;
+		// set root and leaf nodes.
 		for(Processor p : processors) {
 			setLeafNode(p);
 			setRoot(p);
 		}
 		findMax(root);
 		String concatenatedIntegers = "";
+		//Here we are creating a string of each max integer value at each processor concatentated so we can store it in the root processor. 
 		for(Entry<Processor,Integer> entry: values.entrySet()) {
 			Processor p = entry.getKey();
 			int i = entry.getValue();
@@ -51,7 +53,7 @@ public class Convergecast {
 		root.concatenated = concatenatedIntegers;
 		System.out.println("Root has values of all the nodes concatenated: " +root.concatenated);
 	}
-	
+	// this is the recursive function that extracts the maximum value out of the tree.
 	public int findMax(Processor node) {
 		if(node==null) return Integer.MIN_VALUE;
 		else {
@@ -61,7 +63,7 @@ public class Convergecast {
 			return max;
 		}
 	}
-	
+	// this function finds the max of 3 values.
 	public int Max(int nodevalue, int leftvalue, int rightvalue) {
 		ArrayList<Integer> maxValues = new ArrayList<Integer>();
 		maxValues.add(nodevalue);
@@ -70,14 +72,14 @@ public class Convergecast {
 		int max = Collections.max(maxValues);
 		return max;
 	}
-	
+	// here we set the root to be a processor without a parent.
 	public void setRoot(Processor p) {
 		if(p.parent==null) {
 			root = p;
 			p.isRoot = true;
 		}
 	}
-	
+	// if a processor doesn't have a right or left child it is a leaf node
     public void setLeafNode(Processor p) {
     		if(p.left == null && p.right == null) p.isLeafNode = true;
     }
